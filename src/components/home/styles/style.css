@@ -1,0 +1,10 @@
+.hover-gradient {
+  transition: background 0.4s ease-in-out, transform 0.3s;
+  background: linear-gradient(135deg, #ffffff, #f3f4f6);
+}
+
+.hover-gradient:hover {
+  background: linear-gradient(135deg, #c084fc, #6366f1); /* Violet to Indigo */
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
