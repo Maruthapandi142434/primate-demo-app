@@ -6,28 +6,22 @@ const config: Config = {
   content: [
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    // './src/**/*.{js,ts,jsx,tsx,mdx}', // This is redundant if covered by the above two
   ],
   theme: {
-    container: { // Optional: Add default container padding
+    container: {
       center: true,
       padding: {
-        DEFAULT: '1rem', // Default padding
-        sm: '1.5rem',    // Padding for sm screens and up
-        lg: '2rem',     // Padding for lg screens and up
+        DEFAULT: '1rem',
+        sm: '1.5rem',
+        lg: '2rem',
       },
-      // screens: { // Optional: customize container max-widths
-      //   sm: '640px',
-      //   md: '768px',
-      //   lg: '1024px',
-      //   xl: '1280px',
-      // },
     },
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', ...fontFamily.sans],
-        bebas: ['var(--font-bebas)', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif'],
+        sans: ['var(--font-inter)', ...fontFamily.sans], // Uses Inter as default sans
+        bebas: ['var(--font-bebas)', 'sans-serif'],    // For PRIMATE logo
+        montserrat: ['var(--font-montserrat)', ...fontFamily.sans], // For nav links if you use font-montserrat class. If using montserrat.className directly, this line is more for fallback or other uses.
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -59,20 +53,17 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        // You could also add your specific brand colors here if they are fixed
-        // e.g., 'brand-orange': '#F7941D', (then use text-brand-orange, bg-brand-orange)
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
-      keyframes: { // Keyframes for animations
+      keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' }, // Assumes the content is duplicated once inside the track
+          '100%': { transform: 'translateX(-50%)' },
         },
-        // Keyframes for tailwindcss-animate (if you use it)
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -82,18 +73,16 @@ const config: Config = {
           to: { height: "0" },
         },
       },
-      animation: { // Animations
-        marquee: 'marquee 30s linear infinite', // Adjust duration (e.g., 20s, 30s, 40s) for speed
-        // Animations for tailwindcss-animate (if you use it)
+      animation: {
+        marquee: 'marquee 30s linear infinite',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),        // For better default form styling
-    require('tailwindcss-animate'),       // For simple CSS animations (often with shadcn/ui)
-    // require('@tailwindcss/typography'), // Uncomment if you need prose styling
+    require('@tailwindcss/forms'),
+    require('tailwindcss-animate'),
   ],
 };
 

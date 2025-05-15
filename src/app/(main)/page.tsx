@@ -1,161 +1,99 @@
-// app/page.tsx (or your HomePage file)
-// import ProductCard from '@/components/products/ProductCard'; // No longer directly used here for this section
-import prisma from '@/lib/db';
+'use client';
+
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import AnimatedNewArrivals from '@/components/home/AnimatedNewArrivals';
+import { Product } from '@/types/product';
 import { HoverBorderGradientDemo } from '@/components/hover-button';
 
-// ProductForPage and CategoryForPage types should be defined or imported here
-// For brevity, assuming they are defined as in your original code.
+export default function HomePage({ products }: { products: Product[] }) {
+  const titleRef = useRef(null);
+  const subTextRef = useRef(null);
+  const buttonRef = useRef(null);
 
-// Make sure these types are accessible/defined
-export interface CategoryForPage { // Export if AnimatedNewArrivals needs it from here
-  id: number;
-  name: string;
-}
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.fromTo(titleRef.current, { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: 'power4.out' });
+    tl.fromTo(subTextRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1 }, '-=0.6');
+    tl.fromTo(buttonRef.current, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.8 }, '-=0.4');
+  }, []);
 
-export interface ProductForPage { // Export if AnimatedNewArrivals needs it from here
-  id: number;
-  name: string;
-  price: number;
-  description?: string | null;
-  imageUrl?: string | null;
-  category?: CategoryForPage;
-}
-
-// Import the new client component
-import AnimatedNewArrivals from '@/components/home/AnimatedNewArrivals'; // Adjust path as needed
-import { TypewriterEffect } from '@/components/ui/text-hover';
-import { Product } from '@/types/product';
-
-// Helper for Unsplash placeholders
-const getGymImageUrl = (productName: string, index: number): string => {
-  const keywords = productName.toLowerCase().split(' ').join(',');
-  let query = "gym,fitness";
-  if (keywords.includes('protein') || keywords.includes('powder')) query = "protein,supplement";
-  else if (keywords.includes('dumbbell') || keywords.includes('weight')) query = "dumbbell,weights";
-  else if (keywords.includes('leggings') || keywords.includes('tank') || keywords.includes('apparel')) query = "gym,apparel";
-  else if (keywords.includes('band') || keywords.includes('resistance')) query = "resistance,band";
-  else if (keywords.includes('bottle') || keywords.includes('shaker')) query = "shaker,bottle";
-  return `https://source.unsplash.com/400x400/?${query},${keywords}&sig=${index}`;
-};
-
-async function getNewArrivalProducts(): Promise<ProductForPage[]> { // Renamed for clarity
-  const productsFromDb = await prisma.product.findMany({
-    where: {
-      isFeatured: true, // Or some other criteria for "new arrivals"
-      // You might want a specific "isNewArrival" flag or sort by creation date
-    },
-    orderBy: {
-      createdAt: 'desc', // Example: newest products first
-    },
-    include: {
-      category: true,
-    },
-    take: 4, // Fetch only 4 products
-  });
-
-  return productsFromDb.map((product: Product , index :any) => ({
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    description: product.description,
-    imageUrl: product.imageUrl || getGymImageUrl(product.name, index),
-    category: product.category ? {
-      id: product.category.id,
-      name: product.category.name
-    } : undefined,
-  }));
-}
-
-export default async function HomePage() {
-  const newArrivalProducts = await getNewArrivalProducts(); // Use the updated function
-
-  const heroVideoUrl = "https://res.cloudinary.com/dzldch2cm/video/upload/v1746877370/Fitness_Cinematic_video___Gym_commercial___Cinematic_fitness_film___Fitness_commercial_2K_HD_gbs5gu.webm";
-  const heroFallbackImageUrl = "/images/gym-hero-bg.jpg";
-
-
+  const heroVideoUrl =
+    'https://res.cloudinary.com/dzldch2cm/video/upload/v1746877370/Fitness_Cinematic_video___Gym_commercial___Cinematic_fitness_film___Fitness_commercial_2K_HD_gbs5gu.webm';
+  const fallbackImg = '/images/gym-hero-bg.jpg';
 
   return (
     <>
-      {/* Hero Section - Gym Themed with Video Background (Your existing code) */}
-      <section
-        className="bg-gray-800 text-white py-40 md:py-64 relative overflow-hidden"
-        style={{ backgroundImage: `url(${heroFallbackImageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
-      >
+      <section className="relative h-[90vh] w-full overflow-hidden bg-black text-white">
         <video
           autoPlay
-          loop
           muted
+          loop
           playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-          poster={heroFallbackImageUrl}
+          poster={fallbackImg}
+          className="absolute inset-0 w-full h-full object-cover z-0"
         >
           <source src={heroVideoUrl} type="video/webm" />
           <source src={heroVideoUrl.replace('.webm', '.mp4')} type="video/mp4" />
-          Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black opacity-40 z-[1]"></div>
-        <div className="container mx-auto px-4 text-center relative z-[2] ">
-          <TypewriterEffect words={[
-            { text: "Surpass", className: "text-blue-500 pb-4" },
-            { text: "Your", className: "text-green-500 pb-4" },
-            { text: " Limit", className: "text-red-500 pb-4" },
-          ]} />
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-sm">
+
+        <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-[4px] z-[1]" />
+
+        <div className="relative z-[2] h-full flex flex-col justify-center items-center text-center px-4">
+      
+          <h1
+            ref={titleRef}
+            className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow-xl"
+          >
+            Surpass Your Limit
+          </h1>
+          <p
+            ref={subTextRef}
+            className="mt-4 text-lg sm:text-xl md:text-2xl max-w-2xl text-gray-300 drop-shadow-sm"
+          >
             Engineered For Modern Athletes
           </p>
-          {/* <Link href="/products">
-            <Button
-              variant="default"
-              size="lg"
-              className="px-10 py-3 text-lg font-semibold transform hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
-            >
-              Unleashers
-            </Button>
-          </Link> */}
-
-          <HoverBorderGradientDemo />
+          <div ref={buttonRef} className="">
+            <HoverBorderGradientDemo />
+          </div>
         </div>
-        <div className="absolute bottom-1 left-6 z-[2]">
-          <Link
-            href="/products?collection=divine-power"
-            className="group"
-          >
-            <div className="text-white font-semibold px-5 py-3 rounded-lg shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:from-purple-700 hover:via-pink-600 hover:to-red-600">
-              <p className="text-xs uppercase tracking-wider opacity-90 group-hover:opacity-100 ">
-                Now Live
-              </p>
-              <h3 className="text-xl md:text-2xl font-bold drop-shadow-md">
-                Divine Power
-              </h3>
-              <p className="text-sm mt-1 opacity-80 group-hover:opacity-100 group-hover:underline">
-                Shop Now →
-              </p>
+
+        <div className="absolute bottom-3 left-6 z-[2]">
+          <Link href="/products?collection=divine-power" className="group">
+            <div className="text-white font-semibold px-5 py-3 rounded-lg shadow-xl backdrop-blur-md bg-white/10 hover:bg-gradient-to-r from-purple-700 via-pink-600 to-red-600 transition-all">
+              <p className="text-xs uppercase tracking-wider opacity-90 group-hover:opacity-100">Now Live</p>
+              <h3 className="text-xl md:text-2xl font-bold drop-shadow-md">Divine Power</h3>
+              <p className="text-sm mt-1 opacity-80 group-hover:opacity-100 group-hover:underline">Shop Now →</p>
             </div>
           </Link>
         </div>
       </section>
 
-      {/* === New Arrivals Section using Client Component === */}
-      <AnimatedNewArrivals products={newArrivalProducts} />
+      <AnimatedNewArrivals products={products} />
 
-
-
-      {/* Call to Action / Brand Story Section (Your existing code) */}
-      <section className="container mx-auto py-12 md:py-16 px-4 text-center">
-        <h2 className="text-3xl sm:text-2xl md:text-4xl font-extrabold mb-6 leading-tight drop-shadow-md">
+      <section className="container mx-auto py-16 px-4 text-center">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-gray-900 dark:text-white">
           Join the Fitness Revolution Today
         </h2>
-        <h3 className="text-4xl mb-6 text-gray-900 uppercase font-extrabold ">PRIMATE</h3>
-        <p className="text-l  text-gray-700 mb-8 text-justify w-3/4 mx-auto font-extrabold">
-          Primate is more than just a sportswear brand; it’s a symbol of pride, dedication, and loyalty to a community that embodies strength, resilience, and the relentless pursuit of greatness. Our high-performance gear is crafted for those who live and breathe the primate spirit—pushing boundaries, breaking barriers, and standing united in the face of challenges. Choosing primate means embracing a way of life, committing to excellence, and representing a brand built on passion and determination. We celebrate those who wear primate with pride, honoring the commitment to Surpass Your Limits and inspire others to do the same.
-          - <strong className='font-extrabold'>“Engineered for modern athletes”</strong>
+        <h3 className="text-4xl mb-6 text-black  uppercase font-extrabold tracking-widest">PRIMATE</h3>
+        <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-10 max-w-3xl mx-auto font-semibold leading-relaxed">
+          Primate is more than just a sportswear brand — it’s a symbol of pride, dedication, and loyalty to a community
+          that embodies strength, resilience, and the relentless pursuit of greatness. Our high-performance gear is
+          crafted for those who live and breathe the primate spirit — pushing boundaries and standing united in the face
+          of challenge. <br />
+          <span className="block mt-4 font-bold text-gray-900 dark:text-white text-xl">
+            “Engineered for modern athletes”
+          </span>
         </p>
         <Link href="/products">
-          <Button variant="default" size="lg">
-            Get Involve
+          <Button
+            variant="default"
+            size="lg"
+            className="bg-gradient-to-r from-gray-800 to-black text-white px-8 py-3 rounded-xl shadow-xl hover:scale-105 transition-transform"
+          >
+            Get Involved
           </Button>
         </Link>
       </section>
