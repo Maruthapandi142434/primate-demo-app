@@ -106,44 +106,40 @@ export default async function HomePage() {
         </video>
         <div className="absolute inset-0 bg-black opacity-40 z-[1]"></div>
         <div className="container mx-auto px-4 text-center relative z-[2] ">
-          <TypewriterEffect words={[
-            { text: "Surpass", className: "text-White-500 pb-4" },
-            { text: "Your", className: "text-white-500 pb-4" },
-            { text: " Limit", className: "text-white-500 pb-4" },
-          ]} />
+<h1 className="text-5xl font-bold mb-3 text-center transition-transform duration-300 hover:scale-105">
+  Surpass Your Limit
+</h1>
+
+
           <p className="text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-sm">
             Engineered For Modern Athletes
           </p>
-          {/* <Link href="/products">
-            <Button
-              variant="default"
-              size="lg"
-              className="px-10 py-3 text-lg font-semibold transform hover:scale-105 transition-transform duration-200 shadow-lg hover:shadow-xl"
-            >
-              Unleashers
-            </Button>
-          </Link> */}
+         
 
           <HoverBorderGradientDemo />
         </div>
-        <div className="absolute bottom-1 left-6 z-[2]">
-          <Link
-            href="/products?collection=divine-power"
-            className="group"
-          >
-            <div className="text-white font-semibold px-5 py-3 rounded-lg shadow-xl transform transition-all duration-300 ease-in-out hover:shadow-2xl hover:from-purple-700 hover:via-pink-600 hover:to-red-600">
-              <p className="text-xs uppercase tracking-wider opacity-90 group-hover:opacity-100 ">
-                Now Live
-              </p>
-              <h3 className="text-xl md:text-2xl font-bold drop-shadow-md">
-                Divine Power
-              </h3>
-              <p className="text-sm mt-1 opacity-80 group-hover:opacity-100 group-hover:underline">
-                Shop Now →
-              </p>
-            </div>
-          </Link>
-        </div>
+  <div className="absolute bottom-2 left-6 z-[2]">
+  <Link href="/products?collection=divine-power" className="group">
+    <div
+      className="text-white font-semibold px-5 py-3 rounded-lg shadow-xl transform transition-all duration-300 ease-in-out
+                 bg-slate-100 bg-opacity-40 backdrop-blur-md
+                 hover:bg-gradient-to-r hover:from-purple-700 hover:via-pink-600 hover:to-red-600
+                 hover:shadow-2xl"
+    >
+      <p className="text-xs uppercase tracking-wider opacity-90 group-hover:opacity-100">
+        Now Live
+      </p>
+      <h3 className="text-xl md:text-2xl font-bold drop-shadow-md">
+        Divine Power
+      </h3>
+      <p className="text-sm mt-1 opacity-80 group-hover:opacity-100 group-hover:underline">
+        Shop Now →
+      </p>
+    </div>
+  </Link>
+</div>
+
+
       </section>
 
       {/* === New Arrivals Section using Client Component === */}
@@ -156,8 +152,8 @@ export default async function HomePage() {
         <h2 className="text-3xl sm:text-2xl md:text-4xl font-extrabold mb-6 leading-tight drop-shadow-md">
           Join the Fitness Revolution Today
         </h2>
-        <h3 className="${bebas.variable} font-bebas text-4xl mb-6 text-gray-900  uppercase font-extrabold ">PRIMATE</h3>
-        <p className="text-l  text-gray-700 mb-8 text-justify w-3/4 mx-auto font-extrabold">
+        <h3 className="${bebas.variable} font-bebas text-center text-4xl mb-6 text-gray-900 italic tracking-wider    uppercase font-extrabold ">PRIMATE</h3>
+        <p className="text-l  text-gray-700 mb-8 text-center  w-3/4 mx-auto font-extrabold">
           Primate is more than just a sportswear brand; it’s a symbol of pride, dedication, and loyalty to a community that embodies strength, resilience, and the relentless pursuit of greatness. Our high-performance gear is crafted for those who live and breathe the primate spirit—pushing boundaries, breaking barriers, and standing united in the face of challenges. Choosing primate means embracing a way of life, committing to excellence, and representing a brand built on passion and determination. We celebrate those who wear primate with pride, honoring the commitment to Surpass Your Limits and inspire others to do the same.
           - <strong className='font-extrabold'>“Engineered for modern athletes”</strong>
         </p>
