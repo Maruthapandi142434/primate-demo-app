@@ -22,7 +22,7 @@ export default function RegisterPage() {
             <span className="text-3xl font-bold tracking-tight filter drop-shadow-md">YourFitnessApp</span>
           </Link>
           <h1 className="text-4xl xl:text-5xl font-bebas mb-4 leading-tight filter drop-shadow-lg animate-fade-in-up animation-delay-300">
-            JOIN THE <span className="text-primary">COMMUNITY</span>.
+            JOIN THE <span className="text-red-600">COMMUNITY</span>
           </h1>
           <p className="text-lg xl:text-xl text-gray-300 filter drop-shadow animate-fade-in-up animation-delay-500">
             Start your transformation today. Create your account.
