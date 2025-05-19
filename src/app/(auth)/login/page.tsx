@@ -20,7 +20,7 @@ export default function LoginPage() {
         <div className="absolute bottom-0 left-0 p-8 xl:p-12">
 
           <h1 className="text-4xl xl:text-5xl font-bebas mb-4 leading-tight filter drop-shadow-lg animate-fade-in-up animation-delay-300">
-            UNLOCK YOUR <span className="text-primary">POTENTIAL</span>.
+            UNLOCK YOUR <span className="text-red-600">POTENTIAL</span>.
           </h1>
           <p className="text-lg xl:text-xl text-gray-300 filter drop-shadow animate-fade-in-up animation-delay-500">
             Track progress, crush goals. Your journey starts now.

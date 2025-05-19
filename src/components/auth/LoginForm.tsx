@@ -42,7 +42,7 @@ export default function LoginForm() {
     <div className="w-full animate-fade-in-up animation-delay-700">
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bebas tracking-wider text-white mb-2 filter drop-shadow-md">
-          MEMBER LOGIN
+         LOGIN
         </h2>
         <p className="text-gray-400 text-sm">
           Access your personal fitness dashboard.
@@ -147,7 +147,7 @@ export default function LoginForm() {
           className="font-semibold text-primary hover:text-primary/80 transition-colors inline-flex items-center group" // Use primary for link, inline-flex for icon
         >
           <UserPlus className="mr-1.5 h-4 w-4  text-white transition-transform group-hover:scale-110" /> {/* Icon for Create Account */}
-          <span>Create Account</span>
+          <span className='text-red-600'>Create Account</span>
         </Link>
       </div>
     </div>
