@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react'; // Removed unused Facebook, Youtube imports for clarity
+import { FacebookIcon, InstagramIcon, TwitterIcon } from 'lucide-react';
 
 // To use actual icons, uncomment the next line and install react-icons:
 // import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube, FaTiktok } from 'react-icons/fa';
@@ -159,6 +159,9 @@ export default function Footer() {
     { href: "/policies/returns", text: "RETURNS & EXCHANGES" },
     { href: "/policies/privacy", text: "PRIVACY POLICY" },
     { href: "/policies/terms", text: "TERMS OF SERVICE" },
+    // --- MODIFIED SECTION START ---
+    { href: "/terms-conditions", text: "TERMS & CONDITIONS" },
+    // --- MODIFIED SECTION END ---
   ];
 
   // This handler is defined but not used in the active JSX (Column 1 is commented out)
