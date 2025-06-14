@@ -49,8 +49,8 @@ export default async function ProductsPage(props: {
   ]);
 
   return (
-    <div className="container mx-auto py-8">
-      <div className="grid md:grid-cols-4 gap-8">
+    <div className="container mx-auto py-8 ">
+      <div className="grid md:grid-cols-4 gap-8 ">
         <div className="md:col-span-1">
           <ProductFilters categories={categories} />
         </div>

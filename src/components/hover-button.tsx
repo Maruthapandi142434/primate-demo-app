@@ -85,14 +85,14 @@ const ClothingIcon = React.forwardRef<SVGSVGElement, {}>((props, ref) => (
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    stroke="#111111"       // default stroke color white
+    stroke="#FFFFFF"       // default stroke color white
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
     className="transition-colors duration-300"
     {...props}
   >
-    <path d="M6 2L3 7V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V7L18 2H6Z" fill="#111111" fillOpacity={0.15} />
+    <path d="M6 2L3 7V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V7L18 2H6Z" fill="#FFFFFF" fillOpacity={0.15} />
     <path d="M9 10L12 13L15 10" />
   </svg>
 ));

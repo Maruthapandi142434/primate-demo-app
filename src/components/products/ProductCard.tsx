@@ -25,7 +25,7 @@ type ProductCardProps = {
 };
 
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product  ,className = '' }: ProductCardProps) {
   const { addToCart } = useCart();
   const [liked, setLiked] = useState(false); // Wishlist toggle
 
@@ -48,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white">
+    <div className={` rounded-lg overflow-hidden   ${className} bg-white`}>
       <Link href={`/products/${product.id}`} className="block">
         <div className="relative aspect-square">
           <Image
