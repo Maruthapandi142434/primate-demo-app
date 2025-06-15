@@ -14,12 +14,7 @@ export default function TermsConditions() {
       <header className="border-b border-gray-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Dumbbell className="h-8 w-8 text-red-500" />
-              <span className="text-2xl font-bold">
-                IRON<span className="text-red-500">GYM</span>
-              </span>
-            </Link>
+            
             <Link href="/">
               <Button variant="outline" className="border-gray-700 bg-transparent text-white hover:bg-gray-800">
                 <ArrowLeft className="mr-2 h-4 w-4" />

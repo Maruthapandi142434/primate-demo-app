@@ -1,4 +1,6 @@
 // app/coming-soon/page.tsx
+'use client';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Mail, Instagram, Facebook, Twitter } from 'lucide-react'; // Or your preferred social icons
 
@@ -9,7 +11,13 @@ export const metadata = {
 
 export default function ComingSoonPage() {
   const brandName = "PRIMATE";
-  const accentColor = "orange-500"; // Matches your footer accent
+  const accentColor = "orange-500"; 
+  // Matches your footer accent
+    const [year, setYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-neutral-100 flex flex-col items-center justify-center p-6 font-inter relative overflow-hidden">
@@ -30,36 +38,7 @@ export default function ComingSoonPage() {
           Our new platform for peak fitness and unparalleled gear is on its way.
         </p>
 
-        <div className="w-full max-w-md mb-10 animate-fadeInUp animation-delay-600">
-          <p className="text-md text-neutral-200 mb-3 font-semibold">
-            Be the first to know when we launch:
-          </p>
-          <form
-            className="flex flex-col sm:flex-row gap-3"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // Handle form submission (e.g., send to an email list service)
-              alert('Thank you for subscribing!');
-            }}
-          >
-            <label htmlFor="email-signup" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="email-signup"
-              type="email"
-              required
-              placeholder="YOUR EMAIL ADDRESS"
-              className={`flex-grow bg-neutral-800 text-white px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-${accentColor} border-2 border-neutral-700 focus:border-${accentColor} transition-all duration-300 placeholder-neutral-500 text-sm uppercase tracking-wider`}
-            />
-            <button
-              type="submit"
-              className={`bg-${accentColor} text-black px-6 py-3 rounded-md hover:bg-orange-600 hover:text-white transition-colors duration-300 font-bebas font-bold text-lg uppercase tracking-wider focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-${accentColor}`}
-            >
-              Notify Me
-            </button>
-          </form>
-        </div>
+     
 
         <div className="flex space-x-6 animate-fadeInUp animation-delay-800">
           <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label={`${brandName} on Instagram`}
