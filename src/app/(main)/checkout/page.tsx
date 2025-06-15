@@ -125,11 +125,11 @@ function CheckoutContent() {
                   <div className="flex-1">
                     <h3 className="font-medium">{item.name}</h3>
                     <p className="text-gray-600">
-                      ${item.price.toFixed(2)} × {item.quantity}
+                      ₹{item.price.toFixed(2)} × {item.quantity}
                     </p>
                   </div>
                   <p className="font-semibold">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ₹{(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
               ))}

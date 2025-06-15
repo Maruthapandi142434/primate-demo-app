@@ -57,12 +57,12 @@ export default function OrderList({ orders }: OrderListProps) {
                     {item.product.name}
                   </Link>
                   <p className="text-sm text-gray-600 mt-1">
-                    {item.quantity} × ${item.unitPrice.toFixed(2)}
+                    {item.quantity} × ₹{item.unitPrice.toFixed(2)}
                   </p>
                 </div>
                 <div className="text-right">
                   <p className="font-medium">
-                    ${(item.quantity * item.unitPrice).toFixed(2)}
+                    ₹{(item.quantity * item.unitPrice).toFixed(2)}
                   </p>
                 </div>
               </div>

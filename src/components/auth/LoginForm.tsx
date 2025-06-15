@@ -147,7 +147,7 @@ export default function LoginForm() {
           className="font-semibold text-primary hover:text-primary/80 transition-colors inline-flex items-center group" // Use primary for link, inline-flex for icon
         >
           <UserPlus className="mr-1.5 h-4 w-4  text-white transition-transform group-hover:scale-110" /> {/* Icon for Create Account */}
-          <span className='text-red-600'>Create Account</span>
+          <span className='text-white font-semibold'>Create Account</span>
         </Link>
       </div>
     </div>

@@ -44,7 +44,7 @@ export default function CartPage() {
                   <Link href={`/products/${item.id}`} className="hover:underline">
                     <h3 className="font-medium">{item.name}</h3>
                   </Link>
-                  <p>${item.price.toFixed(2)}</p>
+                  <p>₹{item.price.toFixed(2)}</p>
                   <div className="flex items-center gap-2 mt-2">
                     <button 
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}

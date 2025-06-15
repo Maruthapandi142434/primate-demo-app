@@ -134,12 +134,12 @@ export default async function CategoryPage(props: {
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {products.map((product : Product) => (
+{products.map((product) => (
   <ProductCard 
     key={product.id} 
     product={{
       ...product,
-      description: product.description // Just pass the value as-is
+      quantity: 1
     }} 
   />
 ))}

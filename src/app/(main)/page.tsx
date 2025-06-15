@@ -28,6 +28,7 @@ export interface ProductForPage { // Export if AnimatedNewArrivals needs it from
   name: string;
   price: number;
   description?: string | null;
+  quantity?: number; // Optional, default to 1 if not specified
   imageUrl?: string | null;
   category?: CategoryForPage;
 }
@@ -64,11 +65,12 @@ async function getNewArrivalProducts(): Promise<ProductForPage[]> { // Renamed f
     take: 4, // Fetch only 4 products
   });
 
-  return productsFromDb.map((product: Product , index :any) => ({
+  return productsFromDb.map((product, index) => ({
     id: product.id,
     name: product.name,
     price: product.price,
     description: product.description,
+    quantity: 1, // Default to 1 if not specified
     imageUrl: product.imageUrl || getGymImageUrl(product.name, index),
     category: product.category ? {
       id: product.category.id,

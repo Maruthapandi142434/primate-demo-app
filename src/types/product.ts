@@ -1,10 +1,10 @@
-// src/types/product.ts
 export type Product = {
   id: number;
   name: string;
   price: number;
-  description?: string | null;  // Make optional
-  imageUrl?: string | null;     // Make optional
+  description?: string | null;
+  quantity?: number; // ✅ Made optional
+  imageUrl?: string | null; // ✅ Already optional
   category?: {
     id: number;
     name: string;

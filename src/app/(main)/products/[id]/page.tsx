@@ -24,10 +24,15 @@ async function getProduct(id: number): Promise<Product> {
         },
       },
     },
+    // Ensure all scalar fields including 'quantity' are selected
   });
 
   if (!product) notFound();
-  return product as Product;
+  // Ensure quantity is present in the returned object
+  return {
+    ...product,
+   quantity: 0, // or handle default as needed
+  } as Product;
 }
 
 export default async function ProductPage(props: {
