@@ -19,12 +19,12 @@ export default function RegisterPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-transparent"></div>
         <div className="absolute bottom-0 left-0 p-8 xl:p-12">
           <Link href="/" className="block mb-6 opacity-90 hover:opacity-100 transition-opacity">
-            <span className="text-3xl font-bold tracking-tight filter drop-shadow-md">YourFitnessApp</span>
+            <span className="text-5xl font-bold italic  font-bebas filter drop-shadow-md tracking-wider ">PRIMATE</span>
           </Link>
           <h1 className="text-4xl xl:text-5xl font-bebas mb-4 leading-tight filter drop-shadow-lg animate-fade-in-up animation-delay-300">
             JOIN THE <span className="text-red-600">COMMUNITY</span>
           </h1>
-          <p className="text-lg xl:text-xl text-gray-300 filter drop-shadow animate-fade-in-up animation-delay-500">
+          <p className="text-lg xl:text-xl text-gray-300 filter  drop-shadow animate-fade-in-up animation-delay-500">
             Start your transformation today. Create your account.
           </p>
         </div>

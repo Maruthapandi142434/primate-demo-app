@@ -14,6 +14,7 @@ type ProductCardProps = {
     name: string;
     price: number;
     description?: string | null;
+    quantity?: number;
     imageUrl?: string | null;
     category?: {
       id: number;
@@ -78,7 +79,7 @@ export default function ProductCard({ product  ,className = '' }: ProductCardPro
               />
             </button>
           </div>
-          <p className="text-primary font-semibold">${product.price.toFixed(2)}</p>
+          <p className="text-primary font-semibold">₹{product.price.toFixed(2)}</p>
           {product.category && (
             <span className="inline-block px-2 py-1 text-xs rounded bg-gray-100 text-gray-600">
               {product.category.name}

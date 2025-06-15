@@ -36,7 +36,7 @@ export default function LoginPage() {
       >
         <div className="lg:hidden mb-8 text-center">
             <Link href="/" className="text-3xl font-bold text-primary hover:text-primary-dark filter drop-shadow-md">
-                YourFitnessApp
+                PRIMATE
             </Link>
         </div>
 
